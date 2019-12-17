@@ -1,0 +1,23 @@
+/*
+post请求配置对应的map文件，"matchesJsonPath": \(.books中\)表示 JSON 对象根目录，
+\(.books表示根目录中存在名称为 books 的一级属性，
+\)..[?(@.price<200)]表示存在名称为 price 的属性，且该属性的值小于20
+*/
+{
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/api/addBookWithBodyPatter/([a-z]*)",
+    "bodyPatterns":[{
+      "matchesJsonPath": "$.books",
+      "matchesJsonPath": "$.comment",
+      "matchesJsonPath": "$..name",
+      "matchesJsonPath": "$..price",
+      "matchesJsonPath": "$..author",
+      "matchesJsonPath": "$..[?(@.price<200)]"
+    }]
+  },
+  "response": {
+    "status": 200,
+    "body": "add book with bodyPatterns successfully"
+  }
+}

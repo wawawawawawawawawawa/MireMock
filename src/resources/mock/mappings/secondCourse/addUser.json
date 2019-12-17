@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/addUser",
+    "headers": {
+      "Content-Type": {"equalTo": "application/json; charset=UTF-8"}
+    },
+    "cookies": {
+      "session":{
+        "matches": ".*12345.*"  //设置cookie，cookie中包含seesion属性，且session值需要包含12345
+      }
+    },
+    "basicAuth": {
+      "username": "root",
+      "password": "root123"   //设置调用接口的用户名和密码
+    },
+    "bodyPatterns":[
+      {
+        "matchesJsonPath": "$.name",
+        "matchesJsonPath": "$..mainName",
+        "matchesJsonPath": "$..alias",
+        "matchesJsonPath": "$.age"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "add user successfully"
+  }
+}

@@ -1,0 +1,27 @@
+/*
+定义了 content-type 必须是application/xml，其次我们定义了 Request Body 中存在节点 price，
+且 price 节点的值需要包含数字 1.
+*/
+{
+  "request":{
+    "method": "POST",
+    "urlPathPattern":"/api/addXmlUser/([a-z]*)",
+    "headers":{
+      "Content-Type":{
+        "equalTo": "application/xml"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "matchesXPath": {
+          "expression": "//price/text()",
+          "contains": "1"
+        }
+      }
+    ]
+  },
+  "response":{
+    "status":200,
+    "body": "add book with xpath bodyPatterns successfully"
+  }
+}

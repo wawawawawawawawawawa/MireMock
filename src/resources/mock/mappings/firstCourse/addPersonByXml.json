@@ -1,0 +1,23 @@
+/*
+XML 格式的接口在 mapping 文件中配置 bodyPatterns 时有两种方式，第一种是使用 equalToxml 方式，
+第二种是使用 matchesXmlPath 方式。
+修改 Request Body 中的字段值或者字段名称或者增加新的字段，接口调用都会失败。equalToXml 方式是严格控制Body体的内容
+*/
+{
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/api/addPersonByXml/([a-z]*)",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/xml"
+      }
+    },
+    "bodyPatterns": [{
+      "equalToXml": "<person><firstName>Done</firstName><lastName>Jone</lastName></person>"
+    }]
+  },
+  "response": {
+    "status": 200,
+    "body": "add person with equalToXml successfully"
+  }
+}

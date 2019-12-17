@@ -1,0 +1,22 @@
+/*
+加入queryParameters可以加入请求参数访问时多个请求参数以&连接，例如
+http://localhost:9090/api/getBookByPathPatter/abc?name=a&price=1
+*/
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/getBookByPathPatter/([a-z]*)",
+    "queryParameters":{
+      "name": {
+        "matches": "[a-z]*"
+      },
+      "price": {
+        "matches": "[0-5]*"
+      }
+    }
+  },
+  "response": {
+    "status":200,
+    "body": "get bok with url path pattern successfully"
+  }
+}
